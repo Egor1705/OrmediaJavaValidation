@@ -30,8 +30,7 @@ public class Matrix {
 	public void insert() {
 		int rows2 = (int) (Math.random() * 4);
 		int columns2 = (int) (Math.random() * 4);
-		System.out.println("rows2 " + rows2);
-		System.out.println("columns2 " + columns2);
+		
 
 		for (int i = rows2; i < rows2 + 2; i++) {
 			for (int j = columns2; j < columns2 + 2; j++) {
@@ -42,8 +41,7 @@ public class Matrix {
 		int rows1 = (int) (Math.random() * 4);
 		int columns1 = (int) (Math.random() * 4);
 
-		System.out.println("rows1 " + rows1);
-		System.out.println("columns1 " + columns1);
+		
 		if (rows2 < 2 && columns2 < 2) {
 
 			if (rows1 == rows2 || rows1 == rows2 + 1 || rows1 == rows2 - 1) {
