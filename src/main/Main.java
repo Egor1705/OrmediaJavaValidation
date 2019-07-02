@@ -32,7 +32,7 @@ public class Main {
 		String mail1 = "wefewfew@mail.ru";
 
 		String mj = "34g3g54@tut.by";
-		String h = "rgegre@mail.by";
+		String h = "rge@gre@mail.by";
 
 		System.out.println(validationEmail(h));
 		System.out.println(validationEmail(mail));
@@ -46,9 +46,10 @@ public class Main {
 		matrix.show();
 		matrix.insert();
 		matrix.show();
+
 	}
 
-	public static boolean sameSimbols(String str) {
+	public static boolean sameSymbols(String str) {
 		boolean check = true;
 
 		for (int i = str.length() - 1; i > 1; i--) {
@@ -59,6 +60,20 @@ public class Main {
 			}
 		}
 		return check;
+	}
+
+	public static int sameSymbolsTut(String str) {
+		int count = -1;
+		char[] tutBy = { '@', 't', 'u', 't', '.', 'b', 'y' };
+		for (int i = tutBy.length - 1; i > 1; i--) {
+			for (int j = 0; j < i; j++) {
+				if (tutBy[i] == tutBy[j]) {
+					count--;
+				}
+			}
+		}
+
+		return count;
 	}
 
 	public static boolean validationNumber(String str) {
@@ -137,9 +152,11 @@ public class Main {
 		char[] mailRu = { '@', 'm', 'a', 'i', 'l', '.', 'r', 'u' };
 		char[] tutBy = { '@', 't', 'u', 't', '.', 'b', 'y' };
 
-		if (sameSimbols(str) == false) {
+		if (sameSymbols(str) == false) {
 			check = false;
 		} else {
+
+			countTut = sameSymbolsTut(str);
 
 			for (int i = 0; i < str.length(); i++) {
 				for (int j = 0; j < mailBy.length; j++) {
@@ -157,6 +174,7 @@ public class Main {
 
 				for (int j = 0; j < tutBy.length; j++) {
 					if (str.charAt(i) == tutBy[j]) {
+
 						countTut++;
 					}
 				}
