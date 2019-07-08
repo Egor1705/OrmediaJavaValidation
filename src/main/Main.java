@@ -31,14 +31,15 @@ public class Main {
 		String mail = "erwefere@mail.by";
 		String mail1 = "wefewfew@mail.ru";
 
-		String mj = "34g3g54@tut.by";
+		String mj = "herhtrjrj@tut.by";
 		String h = "rge@gre@mail.by";
 
-		System.out.println(validationEmail(h));
-		System.out.println(validationEmail(mail));
-
-		System.out.println(validationEmail(mail1));
-		System.out.println(validationEmail(mj));
+		System.out.println(valEmail(mail));
+		System.out.println(valEmail(mail1));
+		System.out.println(valEmail(mj));
+		System.out.println(valEmail("ergr455hrt@rambler.ru"));
+		System.out.println(valEmail("ewgreg@gmail.com"));
+		System.out.println(valEmail(h));
 
 		System.out.println("\nCheck the matrix\n");
 		Matrix matrix = new Matrix();
@@ -60,20 +61,6 @@ public class Main {
 			}
 		}
 		return check;
-	}
-
-	public static int sameSymbolsTut(String str) {
-		int count = -1;
-		char[] tutBy = { '@', 't', 'u', 't', '.', 'b', 'y' };
-		for (int i = tutBy.length - 1; i > 1; i--) {
-			for (int j = 0; j < i; j++) {
-				if (tutBy[i] == tutBy[j]) {
-					count--;
-				}
-			}
-		}
-
-		return count;
 	}
 
 	public static boolean validationNumber(String str) {
@@ -143,50 +130,36 @@ public class Main {
 		return check;
 	}
 
-	public static boolean validationEmail(String str) {
+	public static boolean valEmail(String str) {
 		boolean check = false;
-		int countBy = 0;
-		int countRu = 0;
-		int countTut = 0;
-		char[] mailBy = { '@', 'm', 'a', 'i', 'l', '.', 'b', 'y' };
-		char[] mailRu = { '@', 'm', 'a', 'i', 'l', '.', 'r', 'u' };
-		char[] tutBy = { '@', 't', 'u', 't', '.', 'b', 'y' };
-
+		String mail = "@mail.by";
+		String mailRu = "@mail.ru";
+		String tut = "@tut.by";
+		String rambler = "@rambler.ru";
+		String gmail = "@gmail.com";
 		if (sameSymbols(str) == false) {
 			check = false;
 		} else {
-
-			countTut = sameSymbolsTut(str);
-
-			for (int i = 0; i < str.length(); i++) {
-				for (int j = 0; j < mailBy.length; j++) {
-
-					if (str.charAt(i) == mailBy[j]) {
-						countBy++;
-					}
-				}
-
-				for (int j = 0; j < mailRu.length; j++) {
-					if (str.charAt(i) == mailRu[j]) {
-						countRu++;
-					}
-				}
-
-				for (int j = 0; j < tutBy.length; j++) {
-					if (str.charAt(i) == tutBy[j]) {
-
-						countTut++;
-					}
-				}
+			if (str.length() < 12) {
+				check = false;
 			}
-		}
 
-		if (countTut == tutBy.length) {
-			check = true;
-		} else if (countBy == mailBy.length) {
-			check = true;
-		} else if (countRu == mailRu.length) {
-			check = true;
+			if (str.substring(str.length() - 8, str.length()).equals(mail)) {
+				check = true;
+			}
+			if (str.substring(str.length() - 10, str.length()).equals(gmail)) {
+				check = true;
+			}
+			if (str.substring(str.length() - 7, str.length()).equals(tut)) {
+				check = true;
+			}
+			if (str.substring(str.length() - 8, str.length()).equals(mailRu)) {
+				check = true;
+			}
+			if (str.substring(str.length() - 11, str.length()).equals(rambler)) {
+				check = true;
+			}
+
 		}
 
 		return check;
